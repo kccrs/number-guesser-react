@@ -1,14 +1,23 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const MinMax = require('./MinMax');
-// const ActionButton = require('./ActionButton');
+
+import React from 'react';
+
+import Messages from './Messages';
+import UserInputs from './UserInputs';
+import ActionButton from './ActionButton';
 
 class Application extends React.Component {
+  constructor() {
+    super();
+  }
+
   render () {
     return (
-      <MinMax />
+      <section className="Application">
+        <UserInputs />
+
+      </section>
     )
   }
 }
 
-ReactDOM.render( <Application />, document.querySelector('.application'));
+export default Application;
