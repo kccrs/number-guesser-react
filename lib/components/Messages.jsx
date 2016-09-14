@@ -5,29 +5,26 @@ import GameSettings from './GameSettings';
 import Application from './Application';
 
 export default class Messages extends React.Component {
-  constructor (props) {
-    super (props);
+  constructor (lastGuess, randomNumber) {
+    super ();
     this.state = {
       message: '',
     };
   }
 
-  handleSubmit(lastGuess) {
-    // const { lastGuess, randomNumber} = this.props;
-    if (this.props.lastGuess < this.props.randomNumber) {
+// if the argument is passed in, you don't need to add "this"
+    componentWillReceiveProps(nextProps) {
 
-      this.setState({ message: 'Your this.props.lastGuess is too low.  Try again.'});
-      return this.state.message;
-    }
-    if (this.props.lastGuess > this.props.randomNumber) {
+      if (nextProps.lastGuess < this.props.randomNumber) {
+        this.setState({ message: 'Your last guess is too low.  Try again.'});
+      }
+      if (nextProps.lastGuess > this.props.randomNumber) {
 
-      this.setState({ message: 'Your this.props.lastGuess is too high.  Try again.'});
-      return this.state.message;
-    }
-    if (this.props.lastGuess === this.props.randomNumber) {
+        this.setState({ message: 'Your last guess is too high.  Try again.'});
+      }
+      if (nextProps.lastGuess === this.props.randomNumber) {
 
-      this.setState({ message: "You're a genius! Play again?"});
-      return this.state.message;
+        this.setState({ message: "You're a genius! Play again?"});
     }
   }
 
@@ -37,7 +34,7 @@ export default class Messages extends React.Component {
       <div className="Messages">
         <p>Your last guess was...</p>
         <p>{this.props.lastGuess}</p>
-        <p>{this.handleSubmit()}</p>
+        <p>{this.state.message}</p>
       </div>
     );
   }
