@@ -26,16 +26,16 @@ export default class Application extends Component {
     const randomNumber = parseInt(Math.floor(Math.random() * (max - min + 1)) + min);
     // below is the same as this.setState({ randomNumber: randomNumber })
     this.setState({ randomNumber });
-    this.setState({ min: ''});
-    this.setState({ max: ''});
+    // this.setState({ min: ''});
+    // this.setState({ max: ''});
   }
 
   restartGame() {
+    console.log('hi');
     this.setState({ randomNumber: ''});
     this.setState({ min: ''});
     this.setState({ max: ''});
     this.setState({ lastGuess: null});
-
   }
 
   render () {
@@ -47,10 +47,10 @@ export default class Application extends Component {
           handleChange={(name, value) => this.setValue(name, value)}
           handleGenerate={() => this.generateRandomNumber()}
           handleGuess={(guess) => this.setState({ lastGuess: guess})}
-          handleRestart={() => this.restartGame}
-        />
+          handleRestart={() => this.restartGame()} />
         <Messages
           lastGuess={this.state.lastGuess} randomNumber={this.state.randomNumber}
+          guess={this.state.lastGuess}
         />
       </section>
     )
