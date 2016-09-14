@@ -50,7 +50,11 @@ export default class GameSettings extends React.Component {
           Clear
         </button>
         <button
-          onClick={() => this.props.handleRestart}
+          onClick={() => {
+            this.props.handleRestart();
+            this.setState({ currentGuess: '' })
+            }
+          }
         >
           Restart Game
         </button>
