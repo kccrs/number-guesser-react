@@ -49,7 +49,9 @@ export default class GameSettings extends React.Component {
         >
           Clear
         </button>
-        <button>
+        <button
+          onClick={() => this.props.handleRestart}
+        >
           Restart Game
         </button>
       </div>

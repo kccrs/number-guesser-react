@@ -31,6 +31,10 @@ export default class Application extends Component {
   }
 
   restartGame() {
+    this.setState({ randomNumber: ''});
+    this.setState({ min: ''});
+    this.setState({ max: ''});
+    this.setState({ lastGuess: null});
 
   }
 
@@ -43,6 +47,7 @@ export default class Application extends Component {
           handleChange={(name, value) => this.setValue(name, value)}
           handleGenerate={() => this.generateRandomNumber()}
           handleGuess={(guess) => this.setState({ lastGuess: guess})}
+          handleRestart={() => this.restartGame}
         />
         <Messages
           lastGuess={this.state.lastGuess} randomNumber={this.state.randomNumber}
