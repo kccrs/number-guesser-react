@@ -18,13 +18,13 @@ export default class GameSettings extends React.Component {
           value={this.props.min}
           name="min"
           type="number"
-          onChange={(e) => handleChange(e.target.name, e.target.value)}
+          onChange={(e) => this.props.handleChange(e.target.name, e.target.value)}
         />
         <input
           value={this.props.max}
           name="max"
           type="number"
-          onChange={(e) => handleChange(e.target.name, e.target.value)}
+          onChange={(e) => this.props.handleChange(e.target.name, e.target.value)}
         />
         <button onClick={this.props.handleGenerate}>
           Enter Range
@@ -34,7 +34,7 @@ export default class GameSettings extends React.Component {
           <input
             type="number"
             value={this.state.currentGuess}
-            onChange={(e) => this.setState({ currentGuess: formatNumber(e.target.value)})}
+            onChange={(e) => this.setState({ currentGuess: parseInt(e.target.value)})}
           />
         </p>
         <button
